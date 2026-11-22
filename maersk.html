@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =================================================================
+         [自訂區域 1 / Khu vực tùy chỉnh 1] 網頁標題與 SEO 描述
+         ================================================================= -->
+    <title>陸光協 | 龍華科技大學 &amp; Maersk (馬士基) 實習生</title>
+    <meta name="description" content="陸光協的個人網站與履歷作品集，23歲，目前就讀於龍華科技大學，並於全球航運物流領導品牌 Maersk (馬士基) 擔任實習生。">
+
+    <!-- 引入 Google Fonts: Noto Sans TC (思源黑體 - 繁體中文) 與 Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- 引入 Tailwind CSS (透過 CDN 運作，可直接上傳至 GitHub Pages 使用) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // 設定 Tailwind CSS 支援手動切換深色模式 (class) 與海運物流質感色系 (Maersk 風格深藍與青藍)
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', '"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        maritime: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- =================================================================
+         頂部導覽列 (Navigation Bar)
+         ================================================================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- 左上角個人品牌 Logo -->
+                <a href="#home" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-800 to-cyan-500 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                        陸
+                    </div>
+                    <span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">
+                        陸光協 <span class="text-sky-600 dark:text-sky-400 font-medium text-sm hidden sm:inline">| Portfolio</span>
+                    </span>
+                </a>
+
+                <!-- 桌面版導覽連結 -->
+                <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+                    <a href="#about" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">關於我</a>
+                    <a href="#experience" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">學經歷</a>
+                    <a href="#skills" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">核心能力</a>
+                    <a href="#highlights" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">實習亮點與專案</a>
+                    <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">聯絡我</a>
+                </nav>
+
+                <!-- 右側操作區：深色模式切換 + 手機版漢堡選單按鈕 -->
+                <div class="flex items-center gap-2">
+                    <!-- 深色/淺色模式切換按鈕 -->
+                    <button id="theme-toggle" type="button" aria-label="切換深淺色模式" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <!-- 太陽圖示 (深色模式時顯示) -->
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <!-- 月亮圖示 (淺色模式時顯示) -->
+                        <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- 手機版漢堡選單按鈕 -->
+                    <button id="mobile-menu-btn" type="button" aria-label="開啟主選單" class="md:hidden p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg id="menu-icon-close" class="hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 手機版展開選單 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-5 space-y-1 shadow-lg">
+            <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-600">關於我</a>
+            <a href="#experience" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-600">學經歷</a>
+            <a href="#skills" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-600">核心能力</a>
+            <a href="#highlights" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-600">實習亮點與專案</a>
+            <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-600">聯絡我</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- =================================================================
+             1. 主視覺區塊 (Hero Section)
+             ================================================================= -->
+        <section id="home" class="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28 px-4 sm:px-6 lg:px-8">
+            <!-- 背景微妙海運網格與光暈裝飾 -->
+            <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-100/60 via-slate-50 to-slate-50 dark:from-sky-950/40 dark:via-slate-950 dark:to-slate-950"></div>
+
+            <div class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+                
+                <!-- 左側個人介紹文字 -->
+                <div class="flex-1 text-center md:text-left">
+                    <!-- 狀態標籤 -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/70 border border-sky-200/80 dark:border-sky-800/60 text-sky-800 dark:text-sky-300 text-xs sm:text-sm font-semibold mb-6">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
+                        </span>
+                        <span>Maersk (馬士基) 實習生・積極學習與跨界成長中</span>
+                    </div>
+
+                    <!-- 姓名與核心標語 -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-tight mb-4">
+                        你好，我是 <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-800 via-sky-600 to-cyan-500 dark:from-sky-400 dark:to-cyan-300">陸光協</span>
+                    </h1>
+                    <h2 class="text-lg sm:text-xl lg:text-2xl font-bold text-slate-700 dark:text-slate-300 mb-6">
+                        23歲 <span class="text-sky-500 mx-1">|</span> 龍華科技大學在學中 <span class="text-sky-500 mx-1">|</span> Maersk (馬士基) 實習生
+                    </h2>
+
+                    <!-- [自訂區域 2 / Khu vực tùy chỉnh 2] 一句話個人簡介 -->
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto md:mx-0 mb-8">
+                        結合校園所學的理論基礎與全球航運物流龍頭 Maersk (馬士基) 的第一線實務歷練。我熱衷於國際供應鏈運作、流程優化與跨文化團隊協作，致力於成為兼具執行力與國際視野的新世代專業人才。
+                    </p>
+
+                    <!-- 行動呼籲按鈕 (CTA Buttons) -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                        <a href="#experience" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-sky-700 hover:bg-sky-800 text-white font-semibold shadow-lg shadow-sky-700/25 hover:shadow-sky-700/40 transition-all text-center">
+                            查看學經歷
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold border border-slate-200 dark:border-slate-700 transition-all text-center">
+                            聯絡我
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 右側個人頭像區 -->
+                <div class="relative flex-shrink-0">
+                    <!-- 背景海藍光暈 -->
+                    <div class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-sky-700 to-cyan-400 opacity-20 blur-2xl dark:opacity-30"></div>
+                    <div class="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-200 dark:bg-slate-800">
+                        <!-- =================================================================
+                             [自訂區域 3 / Khu vực tùy chỉnh 3] 個人大頭貼圖片
+                             說明：請將您的照片上傳至 GitHub 倉庫（例如命名為 avatar.jpg），
+                             並將下方 src="..." 改為 "./avatar.jpg" 即可顯示您的個人照片。
+                             ================================================================= -->
+                        <img 
+                            src="https://placehold.co/600x600/0369a1/ffffff?text=%E9%99%B8%E5%85%89%E5%8D%94" 
+                            alt="陸光協的個人頭像" 
+                            class="w-full h-full object-cover"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x600/0369a1/ffffff?text=Lu+Guang-Xie';"
+                        >
+                    </div>
+                    <!-- 右下角 Maersk 實習徽章 -->
+                    <div class="absolute -bottom-3 -left-3 sm:-left-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-2xl shadow-lg flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
+                        <span class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200">Maersk Intern</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             2. 關於我區塊 (About Me)
+             ================================================================= -->
+        <section id="about" class="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200/60 dark:border-slate-800/60 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-sm font-bold tracking-wider uppercase text-sky-600 dark:text-sky-400">About Me</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">關於我</h2>
+                    <div class="w-12 h-1.5 bg-sky-600 rounded-full mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <!-- [自訂區域 4 / Khu vực tùy chỉnh 4] 詳細自我介紹文字 (可依您的科系與個人特質微調) -->
+                    <div class="lg:col-span-7 space-y-5 text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
+                        <p>
+                            您好！我是<strong>陸光協</strong>，今年 23 歲，目前就讀於<strong>龍華科技大學</strong>。在學期間，我不僅注重專業知識的累積，更積極尋找將理論與產業接軌的機會，培養出主動解決問題與快速適應環境的能力。
+                        </p>
+                        <p>
+                            目前我有幸在全球領先的綜合貨櫃航運與物流企業 <strong>Maersk（馬士基）</strong> 擔任實習生。在跨國企業的高標準環境中，我深入接觸了國際物流運作流程、客戶協調與數據追蹤，深刻體會到細節把關與跨部門溝通對全球供應鏈順暢運作的重要性。
+                        </p>
+                        <p>
+                            我具備良好的跨文化溝通能力與團隊合作精神，樂於接受新挑戰並持續精進數位工具應用。期待未來能將我在 Maersk 累積的實戰經驗與熱忱，帶入更多元且具影響力的專案之中。
+                        </p>
+                    </div>
+
+                    <!-- 個人特質與亮點卡片 -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-center hover:border-sky-400 transition-colors">
+                            <div class="text-3xl sm:text-4xl font-black text-sky-700 dark:text-sky-400 mb-1">23 歲</div>
+                            <div class="text-sm font-medium text-slate-600 dark:text-slate-400">充滿衝勁與學習熱忱</div>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-center hover:border-sky-400 transition-colors">
+                            <div class="text-2xl sm:text-3xl font-black text-sky-700 dark:text-sky-400 mb-1 pt-1">Maersk</div>
+                            <div class="text-sm font-medium text-slate-600 dark:text-slate-400">跨國航運物流實習經驗</div>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-center hover:border-sky-400 transition-colors">
+                            <div class="text-2xl sm:text-3xl font-black text-sky-700 dark:text-sky-400 mb-1 pt-1">龍華科大</div>
+                            <div class="text-sm font-medium text-slate-600 dark:text-slate-400">紮實學術與實務訓練</div>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-center hover:border-sky-400 transition-colors">
+                            <div class="text-2xl sm:text-3xl font-black text-sky-700 dark:text-sky-400 mb-1 pt-1">跨文化</div>
+                            <div class="text-sm font-medium text-slate-600 dark:text-slate-400">多語溝通與團隊協作</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             3. 學經歷時間軸區塊 (Education & Experience Timeline)
+             ================================================================= -->
+        <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-sm font-bold tracking-wider uppercase text-sky-600 dark:text-sky-400">Education &amp; Experience</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">學經歷</h2>
+                <div class="w-12 h-1.5 bg-sky-600 rounded-full mx-auto mt-4"></div>
+            </div>
+
+            <div class="space-y-8 border-l-2 border-sky-200 dark:border-sky-900 ml-3 sm:ml-6 pl-6 sm:pl-10">
+                
+                <!-- 經歷卡片 1：Maersk (馬士基) 實習 -->
+                <div class="relative bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <span class="absolute -left-[33px] sm:-left-[49px] top-8 w-4 h-4 rounded-full bg-sky-600 ring-4 ring-slate-50 dark:ring-slate-950"></span>
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 mb-2">
+                                實習經歷・Internship
+                            </span>
+                            <!-- [自訂區域 5 / Khu vực tùy chỉnh 5] 可在此補充您的具體實習部門名稱 -->
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                                Maersk (馬士基) — 實習生 (Intern)
+                            </h3>
+                        </div>
+                        <span class="text-sm font-semibold text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-slate-800 px-3.5 py-1.5 rounded-xl self-start">
+                            進行中 / Present
+                        </span>
+                    </div>
+
+                    <!-- [自訂區域 6 / Khu vực tùy chỉnh 6] 實習工作內容重點 (可依實際工作內容修改) -->
+                    <ul class="space-y-2.5 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+                        <li><strong>國際航運與供應鏈協調：</strong>協助處理進出口貨櫃操作流程、文件核對與貨物動態追蹤，確保運輸時效與資訊準確性。</li>
+                        <li><strong>數據整理與營運報表支援：</strong>運用 Excel 與內部系統進行日常營運數據統計與異常狀態追蹤，提升團隊作業效率。</li>
+                        <li><strong>跨部門與客戶溝通協作：</strong>與業務、客服及海外團隊保持密切聯繫，即時回應客戶需求並協助解決作業流程中的問題。</li>
+                        <li><strong>跨國企業文化實踐：</strong>在全英文與多元文化的工作環境中，學習標準化作業流程 (SOP) 與敏捷團隊合作模式。</li>
+                    </ul>
+                </div>
+
+                <!-- 學歷卡片 2：龍華科技大學 -->
+                <div class="relative bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                    <span class="absolute -left-[33px] sm:-left-[49px] top-8 w-4 h-4 rounded-full bg-cyan-500 ring-4 ring-slate-50 dark:ring-slate-950"></span>
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-cyan-100 dark:bg-cyan-950 text-cyan-800 dark:text-cyan-300 mb-2">
+                                最高學歷・Education
+                            </span>
+                            <!-- [自訂區域 7 / Khu vực tùy chỉnh 7] 請將「學士學位」替換為您的具體系所，例如：國際企業系 / 資訊管理系 / 工業管理系 -->
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                                龍華科技大學 (Lunghwa University of Science and Technology)
+                            </h3>
+                            <p class="text-base font-medium text-slate-700 dark:text-slate-300 mt-1">
+                                學士學位在學中（可在此填寫您的主修科系）
+                            </p>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3.5 py-1.5 rounded-xl self-start">
+                            在學中 / Current
+                        </span>
+                    </div>
+
+                    <ul class="space-y-2.5 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+                        <li>培養紮實的專業理論基礎與實務專題執行能力，善於將課堂知識轉化為實際解決方案。</li>
+                        <li>積極參與團隊分組專案與校園活動，擔任溝通協調角色，展現高度責任感與時間管理能力。</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =================================================================
+             4. 核心能力區塊 (Core Skills & Strengths)
+             ================================================================= -->
+        <section id="skills" class="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200/60 dark:border-slate-800/60 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-sm font-bold tracking-wider uppercase text-sky-600 dark:text-sky-400">Core Skills</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">核心能力</h2>
+                    <div class="w-12 h-1.5 bg-sky-600 rounded-full mx-auto mt-4"></div>
+                </div>
+
+                <!-- [自訂區域 8 / Khu vực tùy chỉnh 8] 核心能力分類卡片 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- 能力 1：物流與供應鏈實務 -->
+                    <div class="p-7 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                        <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-400 flex items-center justify-center mb-5">
+                            <!-- 貨櫃船 / 全球物流圖示 -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">物流與供應鏈實務</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+                            熟悉國際海運與供應鏈運作基礎，具備嚴謹的單證核對與異常追蹤能力。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">國際航運作業流程</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">供應鏈動態追蹤</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">進出口文件審核</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">SOP 流程優化</span>
+                        </div>
+                    </div>
+
+                    <!-- 能力 2：數位工具與數據分析 -->
+                    <div class="p-7 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-400 flex items-center justify-center mb-5">
+                            <!-- 數據分析圖示 -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">數位工具與數據處理</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+                            善用現代辦公軟體與企業系統進行資料整合、視覺化報表整理與高效率文書作業。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Microsoft Excel (進階分析)</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">PowerPoint 簡報製作</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">企業 ERP / 物流系統</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">GitHub 基礎應用</span>
+                        </div>
+                    </div>
+
+                    <!-- 能力 3：語言與跨文化溝通 -->
+                    <div class="p-7 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-400 flex items-center justify-center mb-5">
+                            <!-- 溝通協作圖示 -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">語言與跨文化溝通</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+                            具備多語言溝通優勢與跨國職場適應力，能與不同背景的夥伴順暢協作。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">中文（繁體 / 精通）</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">英文（商務書信與溝通）</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">越南語（母語 / 流利）</span>
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">跨部門問題解決</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             5. 實習亮點與專案區塊 (Internship Highlights & Projects)
+             ================================================================= -->
+        <section id="highlights" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-sm font-bold tracking-wider uppercase text-sky-600 dark:text-sky-400">Highlights &amp; Projects</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">實習亮點與專案</h2>
+                <div class="w-12 h-1.5 bg-sky-600 rounded-full mx-auto mt-4"></div>
+            </div>
+
+            <!-- [自訂區域 9 / Khu vực tùy chỉnh 9] 3張實習收穫與專題卡片 (可依您的實際專案調整內容) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- 亮點卡片 1 -->
+                <article class="group rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300">
+                    <div class="h-3 bg-gradient-to-r from-sky-700 to-cyan-500"></div>
+                    <div class="p-7 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300">Maersk 實習</span>
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">營運協作</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">全球物流營運流程實戰</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-1">
+                            在 Maersk 實習期間，參與日常貨運排程追蹤與客戶需求對接，建立系統化的問題排查思維，確保各項作業皆能準時且精準地完成。
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 亮點卡片 2 -->
+                <article class="group rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300">
+                    <div class="h-3 bg-gradient-to-r from-cyan-500 to-teal-500"></div>
+                    <div class="p-7 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-cyan-100 dark:bg-cyan-950 text-cyan-800 dark:text-cyan-300">效率提升</span>
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">數據整理</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">日常營運數據與報表優化</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-1">
+                            協助整理並核對大量業務與物流數據，透過結構化的表格分類與條件格式設定，大幅減少人工比對時間並降低錯誤率。
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 亮點卡片 3 -->
+                <article class="group rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300">
+                    <div class="h-3 bg-gradient-to-r from-indigo-600 to-sky-600"></div>
+                    <div class="p-7 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300">龍華科大</span>
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">團隊專題</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">在校實務專題與跨領域學習</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-1">
+                            於龍華科技大學期間，與團隊共同規劃並執行實務專題，負責專案進度控管與成果簡報，展現良好的整合與表達能力。
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- =================================================================
+             6. 聯絡方式區塊 (Contact Section)
+             ================================================================= -->
+        <section id="contact" class="py-20 bg-white dark:bg-slate-900/50 border-t border-slate-200/60 dark:border-slate-800/60 px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto">
+                <span class="text-sm font-bold tracking-wider uppercase text-sky-600 dark:text-sky-400">Contact</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2 mb-4">聯絡我</h2>
+                <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-10">
+                    感謝您瀏覽我的個人網站！若有任何職涯交流、實習合作或專案討論的機會，非常歡迎透過以下方式與我聯繫。
+                </p>
+
+                <!-- 互動式一鍵複製 Email 卡片 -->
+                <div class="p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-md max-w-xl mx-auto mb-10">
+                    <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">電子郵件信箱 (Email)</div>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                        <!-- [自訂區域 10 / Khu vực tùy chỉnh 10] 請將下方信箱修改為您的真實 Email -->
+                        <span id="email-text" class="text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-100 select-all">
+                            luguangxie@example.com
+                        </span>
+                        <button 
+                            id="copy-email-btn" 
+                            type="button" 
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-100 dark:bg-sky-950 hover:bg-sky-200 dark:hover:bg-sky-900 text-sky-800 dark:text-sky-300 text-sm font-semibold transition-colors"
+                        >
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <span id="copy-btn-label">複製信箱</span>
+                        </button>
+                    </div>
+                    <!-- 複製成功視覺提示 -->
+                    <div id="copy-toast" class="hidden mt-3 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+                        ✓ 已成功複製電子郵件地址到剪貼簿！
+                    </div>
+                </div>
+
+                <!-- =================================================================
+                     [自訂區域 11 / Khu vực tùy chỉnh 11] 社群連結按鈕
+                     說明：請將 href="..." 替換為您個人的 GitHub 與 LinkedIn 網址
+                     ================================================================= -->
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-semibold transition-all shadow-sm">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#0A66C2] hover:bg-[#004182] text-white font-semibold transition-all shadow-sm">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+
+                    <!-- 請將 mailto: 後方的信箱同步改為您的真實 Email -->
+                    <a href="mailto:luguangxie@example.com" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-sky-700 hover:bg-sky-800 text-white font-semibold transition-all shadow-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>直接寄信</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =================================================================
+         頁尾版權宣告 (Footer)
+         ================================================================= -->
+    <footer class="border-t border-slate-200/80 dark:border-slate-800/80 py-8 px-4 text-center text-sm text-slate-500 dark:text-slate-400">
+        <p>© <span id="current-year">2026</span> 陸光協 (Lu Guang-Xie). All rights reserved.</p>
+    </footer>
+
+    <!-- =================================================================
+         互動功能腳本 (深色模式切換、手機選單、一鍵複製 Email)
+         ================================================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. 自動更新頁尾年份
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+
+            // 2. 深色 / 淺色模式切換邏輯
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+            const htmlEl = document.documentElement;
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                htmlEl.classList.add('dark');
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
+            } else {
+                htmlEl.classList.remove('dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                htmlEl.classList.toggle('dark');
+                const isDark = htmlEl.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+                if (isDark) {
+                    darkIcon.classList.add('hidden');
+                    lightIcon.classList.remove('hidden');
+                } else {
+                    darkIcon.classList.remove('hidden');
+                    lightIcon.classList.add('hidden');
+                }
+            });
+
+            // 3. 手機版漢堡選單開關邏輯
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function toggleMobileMenu() {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    menuIconOpen.classList.add('hidden');
+                    menuIconClose.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                }
+            }
+
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // 4. 一鍵複製 Email 功能
+            const copyEmailBtn = document.getElementById('copy-email-btn');
+            const emailTextEl = document.getElementById('email-text');
+            const copyBtnLabel = document.getElementById('copy-btn-label');
+            const copyToast = document.getElementById('copy-toast');
+
+            copyEmailBtn.addEventListener('click', () => {
+                const email = emailTextEl.textContent.trim();
+                const tempInput = document.createElement('textarea');
+                tempInput.value = email;
+                tempInput.style.position = 'fixed';
+                tempInput.style.opacity = '0';
+                document.body.appendChild(tempInput);
+                tempInput.select();
+
+                try {
+                    document.execCommand('copy');
+                    copyBtnLabel.textContent = '已複製！';
+                    copyToast.classList.remove('hidden');
+
+                    setTimeout(() => {
+                        copyBtnLabel.textContent = '複製信箱';
+                        copyToast.classList.add('hidden');
+                    }, 3000);
+                } catch (err) {
+                    console.error('複製失敗:', err);
+                } finally {
+                    document.body.removeChild(tempInput);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
